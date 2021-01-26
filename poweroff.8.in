@@ -1,0 +1,20 @@
+.Dd 2021-01-26
+.Dt POWEROFF 8
+.Os init #VERSION#
+.Sh NAME
+.Nm poweroff
+.Nd power-off the system
+.Sh SYNOPSIS
+.Nm
+.Sh DESCRIPTION
+.Nm
+is a wrapper script to send
+.Dq USR1
+signal to
+.Xr init 8
+and initiate the shutdown sequence by executing
+.Dq /etc/rc.d/shutdown poweroff .
+.Sh SEE ALSO
+.Xr reboot 8 ,
+.Xr init 8 ,
+.Xr halt 8 .

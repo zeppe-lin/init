@@ -1,26 +1,13 @@
-sinit - suckless init
-=====================
+init
+====
 
-sinit is a simple init.  It was initially based on
-Rich Felker's minimal init[1].
+init is a simple init.
+It's a fork of suckless' sinit (git://git.suckless.org/sinit).
 
-Why?
-----
+License and Copyright
+---------------------
 
-I wanted to get rid of Busybox init on my toy distro[2].
+Copyright (c) 2014-2015 Dimitris Papastamos <sin@2f30.org>
 
-How?
-----
-
-There are 3 signals that sinit will act on.
-
-      SIGUSR1: powers off the machine.
-      SIGINT:  reboots the machine (or alternatively via ctrl-alt-del).
-      SIGCHLD: reap children
-
-To see how sinit integrates with the init scripts, then have
-a look at [3].
-
-[1] https://gist.github.com/rofl0r/6168719
-[2] http://git.2f30.org/morpheus/
-[3] http://git.2f30.org/ports/tree/fs/
+init is licensed through MIT/X Consortium License.
+Read the LICENSE file for the complete license.

@@ -1,19 +1,19 @@
-.Dd December 4, 2014
-.Dt SINIT 8 sinit\-VERSION
-.Os
+.Dd 2021-01-26
+.Dt INIT 8
+.Os init #VERSION#
 .Sh NAME
-.Nm sinit
+.Nm init
 .Nd simple init
 .Sh DESCRIPTION
 .Nm
-is a simple init.  It is configured by modifying
+is the parent of all processes. It is configured by modifying
 .Dq config.h
 and recompiling the code.
 .Ss Init sequence
 By default
 .Nm
 will execute
-.Dq /bin/rc.init .
+.Dq /etc/rc.boot .
 You can chain your init scripts together at that point to allow for
 single-user and multi-user operation.
 .Ss Signal handling
@@ -23,11 +23,11 @@ will respond to the following signals:
 .It USR1
 Default action is to initiate the shutdown sequence by
 executing
-.Dq /bin/rc.shutdown poweroff .
+.Dq /etc/rc.shutdown poweroff .
 .It INT
 Default action is to initiate the reboot sequence by
 executing
-.Dq /bin/rc.shutdown reboot .
+.Dq /etc/rc.shutdown reboot .
 .It CHLD
 Reap children.
 .El
@@ -39,7 +39,9 @@ process in your session has stale filesystem references then it is
 likely your init scripts will fail to unmount the filesystem cleanly.
 It is recommended to signal
 .Nm
-via a wrapper script.
+via a wrapper scripts: 
+.Xr poweroff 8 ,
+.Xr reboot 8 .
 .Pp
 .Nm
 does not clear utmp records.  The version of
@@ -52,9 +54,13 @@ spawns the given program, usually
 does not restart
 .Xr getty 8
 or interact with it in any way.  You will need an external
-respawning mechanism to restart it.
+respawning mechanism to restart it, for example
+.Xr respawn 1 .
 .Sh SEE ALSO
+.Xr poweroff 8 ,
+.Xr reboot 8 ,
 .Xr getty 8 ,
+.Xr respawn 1 ,
 .Xr killall5 8
 .Sh AUTHORS
 .An Dimitris Papastamos Aq Mt sin@2f30.org .

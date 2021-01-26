@@ -1,12 +1,14 @@
-# sinit version
 VERSION = 1.1
 
-# paths
-PREFIX = /usr/local
-MANPREFIX = $(PREFIX)/share/man
+DESTDIR =
+PREFIX  = /usr/local
+BINDIR  = $(PREFIX)/sbin
+MANDIR  = $(PREFIX)/share/man
+ETCDIR  = /etc
 
-CC = cc
-LD = $(CC)
-CPPFLAGS =
-CFLAGS   = -Wextra -Wall -Os
-LDFLAGS  = -s -static
+CC      = cc
+LD      = $(CC)
+CFLAGS += -Wextra -Wall
+#LDFLAGS += -s -static
+
+# End of file

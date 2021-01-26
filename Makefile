@@ -1,39 +1,27 @@
 include config.mk
 
-OBJ = sinit.o
-BIN = sinit
+all: init init.8 poweroff.8 reboot.8
 
-all: $(BIN)
+%: %.in
+	sed -e "s/#VERSION#/$(VERSION)/" $< > $@
 
-$(BIN): $(OBJ)
-	$(CC) $(LDFLAGS) -o $@ $(OBJ) $(LDLIBS)
-
-$(OBJ): config.h
+init:
+	$(CC) $(LDFLAGS) -o $@ init.c $(LDLIBS)
 
 install: all
-	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	cp -f $(BIN) $(DESTDIR)$(PREFIX)/bin
-	mkdir -p $(DESTDIR)$(MANPREFIX)/man8
-	sed "s/VERSION/$(VERSION)/g" < $(BIN).8 > $(DESTDIR)$(MANPREFIX)/man8/$(BIN).8
+	install -Dm0755 init       $(DESTDIR)$(BINDIR)/init
+	install -Dm0644 init.8     $(DESTDIR)$(MANDIR)/man8/init.8
+	install -Dm0644 reboot.8   $(DESTDIR)$(MANDIR)/man8/reboot.8
+	install -Dm0644 poweroff.8 $(DESTDIR)$(MANDIR)/man8/poweroff.8
 
 uninstall:
-	rm -f $(DESTDIR)$(PREFIX)/bin/$(BIN)
-	rm -f $(DESTDIR)$(MANPREFIX)/man8/$(BIN).8
-
-dist: clean
-	mkdir -p sinit-$(VERSION)
-	cp LICENSE Makefile README config.def.h config.mk sinit.8 sinit.c sinit-$(VERSION)
-	tar -cf sinit-$(VERSION).tar sinit-$(VERSION)
-	gzip sinit-$(VERSION).tar
-	rm -rf sinit-$(VERSION)
+	rm -f $(DESTDIR)$(BINDIR)/init
+	rm -f $(DESTDIR)$(MANDIR)/man8/init.8
+	rm -f $(DESTDIR)$(MANDIR)/man8/reboot.8
+	rm -f $(DESTDIR)$(MANDIR)/man8/poweroff.8
 
 clean:
-	rm -f $(BIN) $(OBJ) sinit-$(VERSION).tar.gz
-
-.SUFFIXES: .def.h
-
-.def.h.h:
-	cp $< $@
+	rm -f init init.8 poweroff.8 reboot.8
 
 .PHONY:
-	all install uninstall dist clean
+	all install uninstall clean

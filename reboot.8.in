@@ -1,0 +1,20 @@
+.Dd 2021-01-26
+.Dt REBOOT 8
+.Os init #VERSION#
+.Sh NAME
+.Nm reboot
+.Nd reboot the system
+.Sh SYNOPSIS
+.Nm
+.Sh DESCRIPTION
+.Nm
+is a wrapper script to send
+.Dq INT
+signal to
+.Xr init 8
+and initiate the shutdown sequence by executing
+.Dq /etc/rc.shutdown reboot .
+.Sh SEE ALSO
+.Xr poweroff 8 ,
+.Xr init 8 ,
+.Xr halt 8 .
