@@ -5,7 +5,7 @@ MANPREFIX = $(PREFIX)/share/man
 
 CC        = cc
 LD        = $(CC)
-CFLAGS   += -Wextra -Wall
+CFLAGS   += -Wextra -Wall -pedantic
 #LDFLAGS += -s -static
 
 # End of file
