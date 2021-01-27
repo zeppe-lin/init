@@ -1,14 +1,11 @@
-VERSION = 1.1
+VERSION   = 1.1
 
-DESTDIR =
-PREFIX  = /usr/local
-BINDIR  = $(PREFIX)/sbin
-MANDIR  = $(PREFIX)/share/man
-ETCDIR  = /etc
+PREFIX    = /usr/local
+MANPREFIX = $(PREFIX)/share/man
 
-CC      = cc
-LD      = $(CC)
-CFLAGS += -Wextra -Wall
+CC        = cc
+LD        = $(CC)
+CFLAGS   += -Wextra -Wall
 #LDFLAGS += -s -static
 
 # End of file

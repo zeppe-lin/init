@@ -16,28 +16,28 @@ halt:
 	$(CC) $(LDFLAGS) -o $@ halt.c eprintf.c $(LDLIBS)
 
 install: all
-	install -Dm0644 halt.8     $(DESTDIR)$(MANDIR)/man8/halt.8
-	install -Dm0644 respawn.1  $(DESTDIR)$(MANDIR)/man1/respawn.1
-	install -Dm0644 init.8     $(DESTDIR)$(MANDIR)/man8/init.8
-	install -Dm0644 poweroff.8 $(DESTDIR)$(MANDIR)/man8/poweroff.8
-	install -Dm0644 reboot.8   $(DESTDIR)$(MANDIR)/man8/reboot.8
-	install -Dm0755 halt       $(DESTDIR)$(BINDIR)/halt
-	install -Dm0755 init       $(DESTDIR)$(BINDIR)/init
-	install -Dm0755 poweroff   $(DESTDIR)$(BINDIR)/poweroff
-	install -Dm0755 reboot     $(DESTDIR)$(BINDIR)/reboot
-	install -Dm0755 respawn    $(DESTDIR)$(BINDIR)/respawn
+	install -Dm0644 halt.8     $(DESTDIR)$(MANPREFIX)/man8/halt.8
+	install -Dm0644 respawn.1  $(DESTDIR)$(MANPREFIX)/man1/respawn.1
+	install -Dm0644 init.8     $(DESTDIR)$(MANPREFIX)/man8/init.8
+	install -Dm0644 poweroff.8 $(DESTDIR)$(MANPREFIX)/man8/poweroff.8
+	install -Dm0644 reboot.8   $(DESTDIR)$(MANPREFIX)/man8/reboot.8
+	install -Dm0755 halt       $(DESTDIR)$(PREFIX)/sbin/halt
+	install -Dm0755 init       $(DESTDIR)$(PREFIX)/sbin/init
+	install -Dm0755 poweroff   $(DESTDIR)$(PREFIX)/sbin/poweroff
+	install -Dm0755 reboot     $(DESTDIR)$(PREFIX)/sbin/reboot
+	install -Dm0755 respawn    $(DESTDIR)$(PREFIX)/bin/respawn
 
 uninstall:
-	rm -f	$(DESTDIR)$(BINDIR)/halt
-	rm -f	$(DESTDIR)$(BINDIR)/init
-	rm -f	$(DESTDIR)$(BINDIR)/poweroff
-	rm -f	$(DESTDIR)$(BINDIR)/reboot
-	rm -f	$(DESTDIR)$(BINDIR)/respawn
-	rm -f	$(DESTDIR)$(MANDIR)/man8/halt.8
-	rm -f	$(DESTDIR)$(MANDIR)/man8/init.8
-	rm -f	$(DESTDIR)$(MANDIR)/man8/poweroff.8
-	rm -f	$(DESTDIR)$(MANDIR)/man8/reboot.8
-	rm -f	$(DESTDIR)$(MANDIR)/man1/respawn.1
+	rm -f	$(DESTDIR)$(PREFIX)/sbin/halt
+	rm -f	$(DESTDIR)$(PREFIX)/sbin/init
+	rm -f	$(DESTDIR)$(PREFIX)/sbin/poweroff
+	rm -f	$(DESTDIR)$(PREFIX)/sbin/reboot
+	rm -f	$(DESTDIR)$(PREFIX)/bin/respawn
+	rm -f	$(DESTDIR)$(MANPREFIX)/man8/halt.8
+	rm -f	$(DESTDIR)$(MANPREFIX)/man8/init.8
+	rm -f	$(DESTDIR)$(MANPREFIX)/man8/poweroff.8
+	rm -f	$(DESTDIR)$(MANPREFIX)/man8/reboot.8
+	rm -f	$(DESTDIR)$(MANPREFIX)/man1/respawn.1
 
 clean:
 	rm -f	halt init poweroff reboot respawn \
