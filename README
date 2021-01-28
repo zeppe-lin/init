@@ -1,13 +1,18 @@
 init
 ====
 
-init is a simple init.
-It's a fork of suckless' sinit (git://git.suckless.org/sinit).
+init is a simple init, fork of of suckless' sinit:
+git://git.suckless.org/sinit.
+
+This is a standalone branch, with additional utilities, obtained from
+suckless sbase/ubase. It is useful to full replacement of sysvinit.
 
 License and Copyright
 ---------------------
 
-Copyright (c) 2014-2015 Dimitris Papastamos <sin@2f30.org>
+Copyright (c) 2013-2016 Dimitris Papapastamos <sin@2f30.org>
+Copyright (c) 2014-2016 Laslo Hunhold <dev@frign.de>
+Copyright (c) 2014-2016 Hiltjo Posthuma <hiltjo@codemadness.org>
 
 init is licensed through MIT/X Consortium License.
 Read the LICENSE file for the complete license.
