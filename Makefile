@@ -6,7 +6,7 @@ all: init init.8 poweroff.8 reboot.8
 	sed -e "s/#VERSION#/$(VERSION)/" $< > $@
 
 init:
-	$(CC) $(LDFLAGS) -o $@ init.c $(LDLIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ init.c $(LDLIBS)
 
 install: all
 	install -Dm0755 init        $(DESTDIR)$(PREFIX)/sbin/init
